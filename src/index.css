@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.login-form {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  /* width: fit-content; */
+  width: 33%;
+  z-index: 10;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
