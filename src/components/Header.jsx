@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { checkValidateData } from "../utils/validate";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState(null);
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
 
   const handleLogin = () => {
     setIsLogin(!isLogin);
+  };
+
+  const handleValidateForm = () => {
+    console.log(email.current.value);
+    console.log(password.current.value);
+
+    const message = checkValidateData(
+      email.current.value,
+      password.current.value
+    );
+    setError(message);
   };
   return (
     <div className="container">
@@ -24,23 +41,30 @@ const Header = () => {
         {!isLogin && (
           <input
             type="text"
+            ref={name}
             placeholder="Full Name"
-            className="p-[15px] mb-5 border-[#9f9f9f] border-[0.6px] rounded w-full placeholder:text-[#b9b9b9]"
+            className="p-[15px] mb-5 text-white border-[#9f9f9f] border-[0.6px] rounded w-full placeholder:text-[#b9b9b9]"
           />
         )}
         <input
           type="email"
+          ref={email}
           placeholder="Email address"
-          className="p-[15px] mb-5 border-[#9f9f9f] border-[0.6px] rounded w-full placeholder:text-[#b9b9b9]"
+          className="p-[15px] mb-5 text-white border-[#9f9f9f] border-[0.6px] rounded w-full placeholder:text-[#b9b9b9]"
         />
         <input
           type="password"
+          ref={password}
           placeholder="Password"
-          className="p-[15px] mb-5 border-[#9f9f9f] border-[0.6px] rounded w-full placeholder:text-[#b9b9b9]"
+          className="p-[15px] mb-5 text-white border-[#9f9f9f] border-[0.6px] rounded w-full placeholder:text-[#b9b9b9]"
         />
-        <button className="p-3 bg-red-600 w-full font-semibold cursor-pointer text-white rounded">
+        <button
+          onClick={handleValidateForm}
+          className="p-3 bg-red-600 w-full font-semibold cursor-pointer text-white rounded"
+        >
           {isLogin ? "Sign In" : "Sign Up"}
         </button>
+        <p className="py-3 text-red-500 font-medium">{error}</p>
         <p className="mt-4 text-white cursor-pointer" onClick={handleLogin}>
           {isLogin ? (
             <p>
