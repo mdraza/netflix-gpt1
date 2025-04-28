@@ -18,6 +18,9 @@
 - BugFixed: SignUp user display name and profile picture
 - BugFixed: if the user is not loggedIn redirect /broswer to Login page and vice-versa
 - Unsubscribe to the onAuthStateChanged callback
+- Added hardcoded value into constant file
+- Register TMDB API, create an app & get access token
+- Get Data from TMDB now playing movie list
 
 # Features:-
 
