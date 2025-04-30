@@ -47,22 +47,18 @@ const Header = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed z-10 w-full ${
-        userProfile && "border-b-2 border-slate-300 bg-slate-100"
-      }`}
-    >
+    <div className={`absolute top-0 z-10 w-full `}>
       <div className="flex justify-between mx-[120px] items-center">
         <div className="">
           <img className="w-48" src={LOGO} alt="logo" />
         </div>
         {userProfile && (
           <div className="flex gap-2 items-center">
-            <img
+            {/* <img
               className="w-10 h-10 rounded"
               src={userProfile?.photoURL}
               alt="user photo"
-            />
+            /> */}
             <p className="font-medium">{userProfile?.displayName}</p>
             <button
               onClick={handleSignOut}
